@@ -17,21 +17,28 @@ console.log("Database OPENED");
 let db = SQLite.openDatabase(
     {
         name: 'test.db',
-        createFromLocation: '~test.db',
     }, openCB, errorCB);
 
 const onPressButtonLogin = (username, password) => {
     db.transaction((tx) => {
         var sql = 'SELECT * FROM user WHERE username=\'' + username + '\'';
         tx.executeSql(sql, [], (tx, results) => {
-            //if (db != null) ToastAndroid.show("adad");
-            //ToastAndroid.show(sql, ToastAndroid.LONG);
             var length = results.rows.length;
             ToastAndroid.show(length.toString(), ToastAndroid.LONG);
-            //if (length == 0) ToastAndroid.show("adadd");
         });
     });
 
+}
+
+const onPressButtonRegister = (username, password) => {
+    db.transaction((tx) => {
+        //var sql = 'SELECT * FROM user WHERE username=\'' + username + '\'';
+        var sql = 'insert into user (username, password) values (?, ?)';
+        tx.executeSql(sql, [username,password], (tx, results) => {
+            var length = results.rows.length;
+            ToastAndroid.show(sql.toString(), ToastAndroid.LONG);
+        });
+    });
 }
 
 //let db = SQLite.openDatabase(database_name, database_version, database_displayname, database_size, openCB, errorCB);
@@ -61,6 +68,12 @@ const  ComponentScren = () => {
                 onPress = {() => onPressButtonLogin(username,password)}
             >
                 <Text>Login</Text>
+            </TouchableOpacity>
+
+            <TouchableOpacity
+                onPress = {() => onPressButtonRegister(username,password)}
+            >
+                <Text>Register</Text>
             </TouchableOpacity>
         </View>
         
