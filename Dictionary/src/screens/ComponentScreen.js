@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import {Text, StyleSheet, View, TextInput, ToastAndroid, TouchableOpacity, useColorScheme, ScrollView } from 'react-native';
 import SQLite from 'react-native-sqlite-storage'
 import WordCard from '../components/WordCard.js'
+import { Button, SearchBar, WhiteSpace } from '@ant-design/react-native';
 
 SQLite.DEBUG(true);
 SQLite.enablePromise(false);
@@ -22,8 +23,6 @@ let db = SQLite.openDatabase(
         name: 'dictionary.db',
         createFromLocation: 1,
     }, openCB, errorCB);
-
-
 
 
 //let db = SQLite.openDatabase(database_name, database_version, database_displayname, database_size, openCB, errorCB);
@@ -49,15 +48,17 @@ const  ComponentScren = () => {
     return (
         <View>
             <Text style={styles.subHeaderStyle}>Input your word</Text>
-            <TextInput 
+            <SearchBar
+                defaultValue = ""
                 placeholder = "search"
-                onChangeText = {userInput => setWord(userInput)}
+                cancelText = "cancel"
+                onSubmit = {() => onPressButtonSearch(word)}
+                onChange = {userInput => setWord(userInput)}
             />
-            <TouchableOpacity
-                onPress = {() => onPressButtonSearch(word)}
-            >
-                <Text>Search</Text>
-            </TouchableOpacity>
+            <WhiteSpace/>
+            <View style = {styles.button}>
+                <Button type="primary" onPress = {() => onPressButtonSearch(word)}>search</Button>
+            </View>
             <WordCard html= {word} />
 
         </View>
@@ -71,6 +72,15 @@ const styles = StyleSheet.create({
     subHeaderStyle: {
         fontSize: 45
     },
+    button: {
+        width: 400,
+        justifyContent: 'center',
+        flexDirection: "row",
+        alignItems: 'center'
+    },
+    searhcBar: {
+        margin: 20
+    }
 });
 
 export default ComponentScren;
