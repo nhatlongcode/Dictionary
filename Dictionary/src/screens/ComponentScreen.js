@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import {Text, StyleSheet, View, TextInput, ToastAndroid, TouchableOpacity, useColorScheme } from 'react-native';
+import {Text, StyleSheet, View, TextInput, ToastAndroid, TouchableOpacity, useColorScheme, ScrollView } from 'react-native';
 import SQLite from 'react-native-sqlite-storage'
+import HTML from "react-native-render-html";
 
 SQLite.DEBUG(true);
 SQLite.enablePromise(false);
@@ -39,7 +40,7 @@ const  ComponentScren = () => {
                 var length = results.rows.length;
                 var res = results.rows.item(0);
                 ToastAndroid.show(res.html.toString(), ToastAndroid.LONG);
-                setWord(res.description.toString());
+                setWord(res.html.toString());
             });
         });
     
@@ -56,10 +57,12 @@ const  ComponentScren = () => {
                 onPress = {() => onPressButtonSearch(word)}
             >
                 <Text>Search</Text>
-                <Text>{word}</Text>
             </TouchableOpacity>
+            <ScrollView>
+                <HTML source ={{html: word}}/>
+            </ScrollView>
+
         </View>
-        
     );
 };
 
