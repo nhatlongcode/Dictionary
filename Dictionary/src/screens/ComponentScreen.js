@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import {Text, StyleSheet, View, TextInput, ToastAndroid, TouchableOpacity, useColorScheme, ScrollView } from 'react-native';
 import SQLite from 'react-native-sqlite-storage'
-import HTML from "react-native-render-html";
+import WordCard from '../components/WordCard.js'
 
 SQLite.DEBUG(true);
 SQLite.enablePromise(false);
@@ -39,7 +39,7 @@ const  ComponentScren = () => {
             tx.executeSql(sql, [username], (tx, results) => {
                 var length = results.rows.length;
                 var res = results.rows.item(0);
-                ToastAndroid.show(res.html.toString(), ToastAndroid.LONG);
+                //ToastAndroid.show(res.html.toString(), ToastAndroid.LONG);
                 setWord(res.html.toString());
             });
         });
@@ -58,9 +58,7 @@ const  ComponentScren = () => {
             >
                 <Text>Search</Text>
             </TouchableOpacity>
-            <ScrollView>
-                <HTML source ={{html: word}}/>
-            </ScrollView>
+            <WordCard html= {word} />
 
         </View>
     );
