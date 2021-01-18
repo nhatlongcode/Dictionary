@@ -14,66 +14,49 @@ const openCB = () => {
 console.log("Database OPENED");
 };
 
+let word = '';
+
 let db = SQLite.openDatabase(
     {
-        name: 'test.db',
+        name: 'dictionary.db',
+        createFromLocation: 1,
     }, openCB, errorCB);
 
-const onPressButtonLogin = (username, password) => {
-    db.transaction((tx) => {
-        var sql = 'SELECT * FROM user WHERE username=\'' + username + '\'';
-        tx.executeSql(sql, [], (tx, results) => {
-            var length = results.rows.length;
-            ToastAndroid.show(length.toString(), ToastAndroid.LONG);
-        });
-    });
 
-}
 
-const onPressButtonRegister = (username, password) => {
-    db.transaction((tx) => {
-        //var sql = 'SELECT * FROM user WHERE username=\'' + username + '\'';
-        var sql = 'insert into user (username, password) values (?, ?)';
-        tx.executeSql(sql, [username,password], (tx, results) => {
-            var length = results.rows.length;
-            ToastAndroid.show(sql.toString(), ToastAndroid.LONG);
-        });
-    });
-}
 
 //let db = SQLite.openDatabase(database_name, database_version, database_displayname, database_size, openCB, errorCB);
 
 const  ComponentScren = () => {
 
-    const [username, setUsername] = useState(0);
-    const [password, setPassword] = useState(0);
+    const [word, setWord] = useState('');
 
 
+    const onPressButtonSearch = (username) => {
+        db.transaction((tx) => {
+            var sql = 'SELECT * FROM av WHERE word =(?)';
+            tx.executeSql(sql, [username], (tx, results) => {
+                var length = results.rows.length;
+                var res = results.rows.item(0);
+                ToastAndroid.show(res.html.toString(), ToastAndroid.LONG);
+                setWord(res.description.toString());
+            });
+        });
     
+    }
 
-    const name = "Long"
     return (
         <View>
             <Text style={styles.subHeaderStyle}>Input your word</Text>
             <TextInput 
-                placeholder = "username"
-                onChangeText = {userInput => setUsername(userInput)}
-            />
-            <TextInput 
-                placeholder = "password"
-                secureTextEntry = {true}
-                onChangeText = {userInput => setPassword(userInput)}
+                placeholder = "search"
+                onChangeText = {userInput => setWord(userInput)}
             />
             <TouchableOpacity
-                onPress = {() => onPressButtonLogin(username,password)}
+                onPress = {() => onPressButtonSearch(word)}
             >
-                <Text>Login</Text>
-            </TouchableOpacity>
-
-            <TouchableOpacity
-                onPress = {() => onPressButtonRegister(username,password)}
-            >
-                <Text>Register</Text>
+                <Text>Search</Text>
+                <Text>{word}</Text>
             </TouchableOpacity>
         </View>
         
