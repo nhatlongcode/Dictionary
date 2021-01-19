@@ -8,12 +8,12 @@ const SearchBar = () =>{
         <View>
             <View style={styles.container}>
                 <View style={styles.searchBox}>
-                    <View style={styles.inputField}>
+                    <View style={styles.inputField} on>
                         <TextInput placeholder="search" />
                     </View>
-                    <View>
+                    <View style={{justifyContent: 'center'}}>
                         <Text style={{
-                            fontSize: 32,
+                            fontSize: 20,
                         }}>
                             X
                         </Text>
@@ -27,6 +27,7 @@ const SearchBar = () =>{
 const styles = StyleSheet.create({
     searchBox: {
         margin: 'auto',
+        backgroundColor: 'lightgray',
         borderRadius: 10,
         paddingBottom: 2,
         paddingTop: 2,
@@ -35,7 +36,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         opacity: 100,
         width: '80%',
-        borderWidth: 1,
+        borderWidth: 0,
     },
     container: {
         justifyContent: 'center',

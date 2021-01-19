@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import {Text, StyleSheet, View, TextInput, ToastAndroid, TouchableOpacity, useColorScheme, ScrollView } from 'react-native';
 import SQLite from 'react-native-sqlite-storage'
 import WordCard from '../components/WordCard'
+import Header from '../components/Header'
 import SearchBar from '../components/SearchBar'
 
 SQLite.DEBUG(true);
@@ -47,17 +48,13 @@ const  ComponentScren = () => {
 
     return (
         <View>
-            <Text style={styles.subHeaderStyle}>Input your word</Text>
+            <Header/>
             <TextInput
                 placeholder = "search"
                 onChangeText = {userInput => setWord(userInput)}
+                onSubmitEditing = {() => onPressButtonSearch(word)}
             />
             <SearchBar></SearchBar>
-            <View style = {styles.button}>
-                <TouchableOpacity onPress = {() => onPressButtonSearch(word)}>
-                    <Text>Search</Text>
-                </TouchableOpacity>
-            </View>
             <WordCard html= {word} />
 
         </View>
@@ -70,12 +67,6 @@ const styles = StyleSheet.create({
     },
     subHeaderStyle: {
         fontSize: 45
-    },
-    button: {
-        width: 400,
-        justifyContent: 'center',
-        flexDirection: "row",
-        alignItems: 'center'
     },
     searhcBar: {
         margin: 20
