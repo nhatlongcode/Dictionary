@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import {Text, StyleSheet, View, TextInput, ToastAndroid, TouchableOpacity, useColorScheme, ScrollView } from 'react-native';
 import SQLite from 'react-native-sqlite-storage'
-import WordCard from '../components/WordCard.js'
-import { Button, SearchBar, WhiteSpace } from '@ant-design/react-native';
+import WordCard from '../components/WordCard'
+import SearchBar from '../components/SearchBar'
 
 SQLite.DEBUG(true);
 SQLite.enablePromise(false);
@@ -48,16 +48,15 @@ const  ComponentScren = () => {
     return (
         <View>
             <Text style={styles.subHeaderStyle}>Input your word</Text>
-            <SearchBar
-                defaultValue = ""
+            <TextInput
                 placeholder = "search"
-                cancelText = "cancel"
-                onSubmit = {() => onPressButtonSearch(word)}
-                onChange = {userInput => setWord(userInput)}
+                onChangeText = {userInput => setWord(userInput)}
             />
-            <WhiteSpace/>
+            <SearchBar></SearchBar>
             <View style = {styles.button}>
-                <Button type="primary" onPress = {() => onPressButtonSearch(word)}>search</Button>
+                <TouchableOpacity onPress = {() => onPressButtonSearch(word)}>
+                    <Text>Search</Text>
+                </TouchableOpacity>
             </View>
             <WordCard html= {word} />
 
