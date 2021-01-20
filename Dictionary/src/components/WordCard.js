@@ -19,7 +19,7 @@ const WordCard = ({html}) => {
 const styles = StyleSheet.create({
     View: {
         margin: 15,
-        marginBottom: 400,
+        marginBottom: 100,
     }
 });
 

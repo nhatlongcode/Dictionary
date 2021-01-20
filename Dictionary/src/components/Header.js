@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
-import {Text, StyleSheet, View, TextInput, ToastAndroid, TouchableOpacity, useColorScheme, ScrollView } from 'react-native';
+import {Text, StyleSheet, View, Button, ToastAndroid, TouchableOpacity, useColorScheme, ScrollView } from 'react-native';
+import SearchBar from '../components/SearchBar'
 
 const Header = () => {
     return (
-        <View>
+        <View style={styles.container}>
             <View style={styles.header}>
-
+                <Button title='asd'/>
+                <SearchBar/>
             </View>
         </View>
     );
@@ -17,6 +19,10 @@ const styles = StyleSheet.create({
         backgroundColor: 'cyan',
         top: 0,
     },
+    container: {
+        flexDirection: 'column',
+    },
+    
 })
 
 export default Header;
