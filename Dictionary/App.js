@@ -11,10 +11,21 @@ const App = () => {
   return(
     <NavigationContainer>
       <Stack.Navigator initialRouteName={Screens.Home}>
-        <Stack.Screen name={Screens.Home} component={LandingScreen}/>
+        <Stack.Screen 
+          name={Screens.Home} 
+          component={LandingScreen}
+          options={{
+            headerStyle:{
+              shadowOpacity: 0,
+              elevation: 0,
+              backgroundColor: '#A7DCFE',
+            },
+          }}  
+        />
         <Stack.Screen name={Screens.Component} component={ComponentScreen}/>
         <Stack.Screen name={Screens.Search} component={SearchScreen}/>
-        <Stack.Screen name={Screens.Word} component={WordScreen}/>
+        <Stack.Screen name={Screens.Word} component={WordScreen}
+        options={({ route }) => ({ title: route.params.title })}/>
       </Stack.Navigator>
   </NavigationContainer>
   );

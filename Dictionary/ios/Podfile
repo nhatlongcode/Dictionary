@@ -8,6 +8,8 @@ target 'Dictionary' do
 
   use_react_native!(:path => config["reactNativePath"])
 
+  pod 'TextToSpeech', :path => '../node_modules/react-native-tts'
+
   target 'DictionaryTests' do
     inherit! :complete
     # Pods for testing

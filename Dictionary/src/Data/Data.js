@@ -44,11 +44,12 @@ export default class Data {
                 {
                     var res = results.rows.item(0);
                     var value = res.html.toString();
-                    callback(value.toString());
+                    var title = res.word.toString();
+                    callback(value.toString(), title.toString());
                 }
                 else
                 {
-                    callback('<h2>Not found!</h2>');
+                    callback('<h2>Not found!</h2>','Error!');
                 }
             });
         });

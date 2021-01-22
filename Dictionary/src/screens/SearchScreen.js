@@ -13,17 +13,18 @@ const SearchScreen = ({navigation}) => {
         Data.Instance().GetHtml(input, MoveToWordScreen);
     }
 
-    const MoveToWordScreen = (html) =>
+    const MoveToWordScreen = (html, word) =>
     {
         navigation.navigate(Screens.Word, 
             {
                 contentHtml: html,
+                title: word,
             });
     }
 
     const OnChangeInput = (text) =>
     {
-        setInput(text);
+        setInput(text.toLowerCase());
     }
 
     return(
