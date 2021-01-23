@@ -9,7 +9,7 @@ const LandingScreen = ({navigation}) => {
     return(
         <View style={styles.container}>
             <View style={styles.searchBar}>
-                <SearchBar/>
+                <SearchBar navigation={navigation}/>
             </View>
             <View>
                 <Text>This is landing screen</Text>

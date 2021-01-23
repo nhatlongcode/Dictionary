@@ -3,7 +3,7 @@ import {Text, StyleSheet, View, TextInput, ToastAndroid, TouchableOpacity, useCo
 import Screens from '../screens/Screens'
 import Data from '../Data/Data'
 
-const SearchBar = () =>{
+const SearchBar = ({navigation}) =>{
 
     const [input, setInput] = useState('');
 
@@ -62,13 +62,13 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         opacity: 100,
         width: '80%',
-        height: '50%',
+        height: '55%',
         borderWidth: 0,
     },
     container: {
         justifyContent: 'center',
         height: 90,
-        backgroundColor: '#A7DCFE',
+        backgroundColor: '#6FC9E7',
         alignItems: 'center'
     },
     inputField: {
