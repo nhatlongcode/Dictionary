@@ -17,8 +17,8 @@ const TranslateScreen = ({navigation}) => {
 
   const translate = (source, target) => {
     agent.GoogleTranslate.trans(source, target, text).then((res) => {
-      if (res.sentences[0].trans) {
-        setTranslatedText(res.sentences[0].trans);
+      if (res && res[0] && res[0][0] && res[0][0][0]) {
+        setTranslatedText(res[0][0][0]);
       }
     });
   };
