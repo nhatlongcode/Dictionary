@@ -67,13 +67,13 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     opacity: 100,
     width: '80%',
-    height: '55%',
+    height: '35%',
     borderWidth: 0,
   },
   container: {
     justifyContent: 'center',
-    height: 90,
-    backgroundColor: '#6FC9E7',
+    height: 150,
+    backgroundColor: '#51ABF0',
     alignItems: 'center',
   },
   inputField: {

@@ -58,7 +58,7 @@ const App = () => {
             initialRouteName={Screens.Home}
             screenOptions={{
               headerStyle: {
-                backgroundColor: '#6FC9E7',
+                backgroundColor: '#51ABF0',
                 shadowOpacity: 0,
                 elevation: 0,
               },

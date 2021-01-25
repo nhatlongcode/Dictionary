@@ -4,6 +4,7 @@ import Screens from './Screens';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 import SearchBar from '../components/SearchBar';
+import MenuButton from '../components/MenuButton';
 
 const LandingScreen = ({navigation}) => {
   return (
@@ -12,12 +13,42 @@ const LandingScreen = ({navigation}) => {
         <SearchBar navigation={navigation} />
       </View>
       <View>
-        <Text>This is landing screen</Text>
-        <TouchableOpacity
-          style={styles.button}
-          onPress={() => navigation.navigate(Screens.Search)}>
-          <Text>Move to next screen</Text>
-        </TouchableOpacity>
+        <MenuButton 
+          navigation={navigation}
+          icon='google'
+          title='Search with google translate'
+          navigateTo={Screens.Search}
+        />
+        <MenuButton 
+          navigation={navigation}
+          icon='book'
+          title='Viet - Anh Dictionary'
+          navigateTo={Screens.Search}
+        />
+        <MenuButton 
+          navigation={navigation}
+          icon='bookmark'
+          title='Favorite words'
+          navigateTo={Screens.Search}
+        />
+        <MenuButton 
+          navigation={navigation}
+          icon='graduation-cap'
+          title='Take exam'
+          navigateTo={Screens.Search}
+        />
+        <MenuButton 
+          navigation={navigation}
+          icon='cog'
+          title='Setting'
+          navigateTo={Screens.Search}
+        />
+        <MenuButton 
+          navigation={navigation}
+          icon='info-circle'
+          title='Info'
+          navigateTo={Screens.Search}
+        />
       </View>
     </View>
   );
