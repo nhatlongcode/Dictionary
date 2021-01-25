@@ -13,40 +13,40 @@ const LandingScreen = ({navigation}) => {
         <SearchBar navigation={navigation} />
       </View>
       <View>
-        <MenuButton 
+        <MenuButton
           navigation={navigation}
-          icon='google'
-          title='Search with google translate'
+          icon="google"
+          title="Search with google translate"
+          navigateTo={Screens.Translate}
+        />
+        <MenuButton
+          navigation={navigation}
+          icon="book"
+          title="Viet - Anh Dictionary"
           navigateTo={Screens.Search}
         />
-        <MenuButton 
+        <MenuButton
           navigation={navigation}
-          icon='book'
-          title='Viet - Anh Dictionary'
+          icon="bookmark"
+          title="Favorite words"
           navigateTo={Screens.Search}
         />
-        <MenuButton 
+        <MenuButton
           navigation={navigation}
-          icon='bookmark'
-          title='Favorite words'
+          icon="graduation-cap"
+          title="Take exam"
           navigateTo={Screens.Search}
         />
-        <MenuButton 
+        <MenuButton
           navigation={navigation}
-          icon='graduation-cap'
-          title='Take exam'
+          icon="cog"
+          title="Setting"
           navigateTo={Screens.Search}
         />
-        <MenuButton 
+        <MenuButton
           navigation={navigation}
-          icon='cog'
-          title='Setting'
-          navigateTo={Screens.Search}
-        />
-        <MenuButton 
-          navigation={navigation}
-          icon='info-circle'
-          title='Info'
+          icon="info-circle"
+          title="Info"
           navigateTo={Screens.Search}
         />
       </View>

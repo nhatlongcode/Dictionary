@@ -15,6 +15,7 @@ import AppLocale from './src/utils/languages';
 import Themes from './src/utils/themes';
 import langAction from './src/redux/LanguageProvider/action';
 import themeAction from './src/redux/ThemeProvider/action';
+import TranslateScreen from './src/screens/TranslateScreen';
 
 function LogoTitle() {
   return (
@@ -78,6 +79,10 @@ const App = () => {
               name={Screens.Word}
               component={WordScreen}
               options={({route}) => ({title: route.params.title})}
+            />
+            <Stack.Screen
+              name={Screens.Translate}
+              component={TranslateScreen}
             />
           </Stack.Navigator>
         </NavigationContainer>

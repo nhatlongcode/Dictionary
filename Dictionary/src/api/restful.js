@@ -40,11 +40,10 @@ const GoogleTranslate = {
   trans: (source, target, content) =>
     superagent
       .get(
-        `https://translate.google.com/translate_a/t?client=gtx&sc=1&v=2.0&sl=${source}&tl=${target}&hl=nl&ie=UTF-8&oe=UTF-8&text=${encodeURI(
+        `https://translate.googleapis.com/translate_a/single?&ie=utf-8&oe=utf-8&client=at&sl=${source}&tl=${target}&dt=t&q=${encodeURI(
           content,
         )}`,
       )
-      .use(tokenPlugin)
       .then(responseBody),
 };
 
