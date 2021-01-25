@@ -5,6 +5,7 @@ import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 import SearchBar from '../components/SearchBar';
 import MenuButton from '../components/MenuButton';
+import TranslateButton from '../components/TranslateBut';
 
 const LandingScreen = ({navigation}) => {
   return (

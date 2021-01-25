@@ -28,12 +28,13 @@ const TranslateScreen = ({navigation}) => {
       <View>
         <StyledTextInput
           multiline={true}
-          numberOfLines={4}
+          numberOfLines={8}
           value={text}
           onChangeText={(value) => setText(value)}
         />
         <TranslateButtonGroup>
           <TranslateButton
+            vntoen={false}
             title={intl.formatMessage({
               id: 'translate.btn.en-vi',
               defaultMessage: 'Anh - Việt',
@@ -41,6 +42,7 @@ const TranslateScreen = ({navigation}) => {
             onPress={() => translate('en', 'vi')}
           />
           <TranslateButton
+            vntoen={true}
             title={intl.formatMessage({
               id: 'translate.btn.vi-en',
               defaultMessage: 'Việt - Anh',
@@ -51,7 +53,7 @@ const TranslateScreen = ({navigation}) => {
         {translatedText ? (
           <StyledTextInput
             multiline={true}
-            numberOfLines={4}
+            numberOfLines={8}
             value={translatedText}
             onChangeText={(value) => setTranslatedText(value)}
           />
